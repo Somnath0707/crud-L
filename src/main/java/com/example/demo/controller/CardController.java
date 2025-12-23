@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Card;
 import com.example.demo.service.CardService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class CardController {
     }
 
     @PutMapping("/{id}")
-    public Card updateCard(@PathVariable Long id, @RequestBody Card card) {
+    public Card updateCard(@PathVariable Long id,@Valid @RequestBody Card card) {
         return cardService.updateCard(id, card);
     }
 
@@ -35,7 +36,7 @@ public class CardController {
     }
 
     @PostMapping
-    public Card createCard(@RequestBody Card card) {
+    public Card createCard(@Valid @RequestBody Card card) {
         return cardService.createCard(card);
     }
 }
